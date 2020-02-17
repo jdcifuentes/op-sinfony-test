@@ -1,6 +1,0 @@
-index:
-  path: /
-  controller: App\Controller\ProductController::index
-category:
-  path: /categories
-  controller: App\Controller\ProductCategoryController::index
