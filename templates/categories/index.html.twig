@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Productos {% endblock %}
+{% block title %} Categorías {% endblock %}
 
 {% block body %}
     <div class="row">
         <div class="col">
-            <a href="{{ path('app_product_new') }}" class="btn btn-primary float-right">Nuevo producto</a>
+            <a href="{{ path('app_category_new') }}" class="btn btn-primary float-right">Nueva categoría</a>
         </div>
     </div>
 
-    {% if products %}
+    {% if categories %}
         <div class="row mt-2">
             <div class="col">
                 <table class="table table-striped">
@@ -18,20 +18,16 @@
                         <th>Código</th>
                         <th>Nombre</th>
                         <th>Descripción</th>
-                        <th>Marca</th>
-                        <th>Categoría</th>
-                        <th>Precio</th>
+                        <th>Estado</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for product in products %}
+                    {% for category in categories %}
                         <tr>
-                            <th>{{ product.code }}</th>
-                            <th>{{ product.name }}</th>
-                            <th>{{ product.description }}</th>
-                            <th>{{ product.brand }}</th>
-                            <th>{{ product.category.name }}</th>
-                            <th>{{ product.price }}</th>
+                            <th>{{ category.code }}</th>
+                            <th>{{ category.name }}</th>
+                            <th>{{ category.description }}</th>
+                            <th>{{ category.active? 'Activa' : 'Inactiva' }}</th>
                         </tr>
                     {% endfor %}
                     </tbody>

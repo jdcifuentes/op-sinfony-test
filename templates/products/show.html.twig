@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Detalle Producto {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <a href="{{ path('app_product_index') }}" class="btn btn-primary float-right">Volver</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Marca</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>{{ product.code }}</th>
+                    <th>{{ product.name }}</th>
+                    <th>{{ product.description }}</th>
+                    <th>{{ product.brand }}</th>
+                    <th>{{ product.category.name }}</th>
+                    <th>{{ product.price }}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
