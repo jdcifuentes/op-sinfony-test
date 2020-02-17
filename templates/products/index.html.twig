@@ -2,6 +2,10 @@
 
 {% block title %} Productos {% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+{% endblock %}
+
 {% block body %}
     <div class="row">
         <div class="col">
@@ -49,4 +53,10 @@
 
 {% block javascripts %}
     <script src="/js/main.js"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#products').DataTable();
+        } );
+    </script>
 {% endblock %}
