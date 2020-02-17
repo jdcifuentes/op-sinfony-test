@@ -30,7 +30,7 @@ Verificar el funcionamiento en
 ```
 
 
-### Todos
+### "toDOS:"
 
  - Notificaciones flash al usuario cuando una acción es exitosa o falla.
  - Test unitarios validaciones de las entidades.
