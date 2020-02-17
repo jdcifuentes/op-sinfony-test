@@ -87,6 +87,15 @@
     "ocramius/proxy-manager": {
         "version": "2.2.3"
     },
+    "omines/datatables-bundle": {
+        "version": "0.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.1",
+            "ref": "467488ddc00aa190c37a4357f226457d4dd6b339"
+        }
+    },
     "php": {
         "version": "7.3"
     },
@@ -110,6 +119,9 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "symfony/asset": {
+        "version": "v4.4.4"
     },
     "symfony/cache": {
         "version": "v4.4.4"
@@ -265,6 +277,19 @@
     },
     "symfony/stopwatch": {
         "version": "v4.4.4"
+    },
+    "symfony/translation": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "2ad9d2545bce8ca1a863e50e92141f0b9d87ffcd"
+        },
+        "files": [
+            "config/packages/translation.yaml",
+            "translations/.gitignore"
+        ]
     },
     "symfony/translation-contracts": {
         "version": "v2.0.1"
