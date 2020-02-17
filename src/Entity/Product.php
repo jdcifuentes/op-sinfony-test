@@ -53,6 +53,11 @@ class Product
     private $category;
 
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function getCode()
     {
         return $this->code;

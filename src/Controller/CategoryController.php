@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\Type\CategoryType;
 use Doctrine\DBAL\Exception\ConstraintViolationException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -82,6 +83,22 @@ class CategoryController extends AbstractController
     }
 
     /**
+     * @Route("/categories/{id}/toggle-active", methods={"PATCH"})
+     */
+    public function toggleActive(Category $category)
+    {
+        $category->setActive(!$category->getActive());
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($category);
+        try {
+            $entityManager->flush();
+            return new JsonResponse(['message' => 'Ok']);
+        } catch (\Exception $exception) {
+            return new JsonResponse(['message' => 'Error'], 500);
+        }
+    }
+
+    /**
      * @Route("/categories/{id}/delete", methods={"DELETE"})
      */
     public function delete(Category $category)
@@ -90,11 +107,10 @@ class CategoryController extends AbstractController
         $entityManager->remove($category);
         try {
             $entityManager->flush();
-            return $this->redirectToRoute('app_category_index');
+            return new JsonResponse(['message' => 'Ok']);
         } catch (\Exception $exception) {
-            return $this->redirectToRoute('app_category_index');
+            return new JsonResponse(['message' => 'Error'], 500);
         }
-
     }
 
 }

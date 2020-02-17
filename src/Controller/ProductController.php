@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\Type\ProductType;
 use Doctrine\DBAL\Exception\ConstraintViolationException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -82,11 +83,18 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/products/{id}/edit", methods={"DELETE"})
+     * @Route("/products/{id}/delete", methods={"DELETE"})
      */
     public function delete(Product $product)
     {
-
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($product);
+        try {
+            $entityManager->flush();
+            return new JsonResponse(['message' => 'Ok']);
+        } catch (\Exception $exception) {
+            return new JsonResponse(['message' => 'Error'], 500);
+        }
     }
 
 }
